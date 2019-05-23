@@ -1,7 +1,87 @@
-{
-    "data":
-        [  {"id": "1", "name": "Die Hard", "rating": "3"},
-           {"id": "2", "name": "Titanic", "rating": "5"}, 
-           {"id": "3", "name": "The Rain", "rating": "4"}
-        ]
-}
+[
+  {
+    "id": "2",
+    "name": "Titanic",
+    "rating": "5"
+  },
+  {
+    "id": "3",
+    "name": "The Rain",
+    "rating": "4"
+  },
+  {
+    "id": "4",
+    "name": "hej",
+    "rating": "4"
+  },
+  {
+    "id": "5",
+    "name": "hej",
+    "rating": "4"
+  },
+  {
+    "id": "6",
+    "name": "hej",
+    "rating": "4"
+  },
+  {
+    "id": "7",
+    "name": "hej",
+    "rating": "4"
+  },
+  {
+    "id": "8",
+    "name": "hej",
+    "rating": "4"
+  },
+  {
+    "id": "9",
+    "name": "hejdsv",
+    "rating": "5"
+  },
+  {
+    "id": "10",
+    "name": "Die H�r",
+    "rating": "0"
+  },
+  {
+    "id": "11",
+    "name": "Die H�r",
+    "rating": "7"
+  },
+  {
+    "id": "12",
+    "name": "Die H�r",
+    "rating": "0"
+  },
+  {
+    "id": "13",
+    "name": "Die Nerdr",
+    "rating": "4"
+  },
+  {
+    "id": "14",
+    "name": "Die Nerdfferr",
+    "rating": "8"
+  },
+  {
+    "id": "15",
+    "name": "Die Nerdfferr",
+    "rating": "18"
+  },
+  {
+    "id": "16",
+    "name": "Die Ner",
+    "rating": "10"
+  },
+  {
+    "id": "17",
+    "name": "Die Nerd",
+    "rating": "10"
+  },
+  {
+    "id": "18",
+    "name": "Die Nerd",
+    "rating": "10"
+  }
+]

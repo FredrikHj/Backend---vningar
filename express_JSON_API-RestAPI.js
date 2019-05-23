@@ -13,16 +13,27 @@ app.get('/Movie', (req, res) => {
 });
 // Gets a specific movis
 app.get('/Movie/:id', (req, res) => {
-    let sendItem;
+    let countItem = 0;
+    let getItem;
     let idToNr = parseInt(req.params.id);
-    // Get movie ID
-    let movieItem = movieList.data.find((obj) => {
-        if (idToNr === obj.id) {
-            sendItem = obj;
-        }        
+
+    console.log('Inkommande ID: '+ idToNr);
+    
+    // Get movie object
+    movieList.data.find((obj, idx) => {
+        countItem++;
+        if (idToNr === countItem) {
+            console.log('Item nr');
+            getItem = movieList.data[idx];
+            console.log(getItem);
+            
+        }      
     });
 
-    res.send(sendItem);
+    console.log('Objekt visas');
+    console.log(getItem);
+    
+    res.send(getItem);
 });
 
 // Create a new movie ===============================================
@@ -44,27 +55,68 @@ function createID() {
 }
 app.post('/Movie', (req, res) => {
     console.log('Ny post');
-    createID();
-    console.log(req.body);
-    
 
     let objForm = {
-        id: createID(),
+        id: JSON.stringify(createID()),
         name: req.body.name,
         rating: req.body.rating,
     };
     movieList.data.push(objForm);
+    console.log(movieList);
+    
     // Save the movies in an json file
-    fileSystem.writeFile('express_JSON_API-RestAPI.json', JSON.stringify(objForm), function(err) {
+   fileSystem.writeFile('express_JSON_API-RestAPI.json', JSON.stringify(movieList //debugging
+     , null, 2
+    ), function(err) {
+        console.log(err);
         
     });
    
     res.send(movieList);
-    
 });
 // Update a movie ================================================
 app.put('/Movie/:id', (req, res) => {
+    console.log('Uppdatera film: ');
+    let countItem = 0;
+    let updateObj = {};
+    let updateItem;
 
+    let idToNr = parseInt(req.params.id);
+    console.log('Inkommande ID: '+ idToNr);
+   
+    // Get movie object to update
+    movieList.data.find((obj, idx) => {
+        countItem++;
+        if (idToNr === countItem) {
+            getItem = movieList.data[idx];
+            console.log('Update Item');
+            
+            updateObj = {
+                id: movieList.data[idx].id,
+                name: req.body.name,
+                rating: req.body.rating,  
+            };
+            let newItemList = [ ...movieList.data.slice(0, idx),  ...movieList.data.slice(idx + 1)];
+            console.log(newItemList);
+
+            console.log('Innan');
+            console.log(movieList.data);
+            
+            console.log('Efter');
+            console.log(updateObj);
+            
+            movieList.data.push(updateObj);
+            
+            // Save the movies in an json file
+            fileSystem.writeFile('express_JSON_API-RestAPI.json', JSON.stringify(newItemList //debugging
+             , null, 2
+            ), function(err) {
+                console.log(err);
+                
+            });
+            res.send(newItemList);
+        }      
+    });
 });
 // Delete a movie ================================================
 app.delete('/Movie/:id', (req, res) => {
