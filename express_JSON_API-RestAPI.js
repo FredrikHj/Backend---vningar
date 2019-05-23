@@ -5,14 +5,9 @@ const fileSystem = require('fs');
 app.use(express.json());
 const port = 3000;
 
-let movieList = {data:
-    [
-        {id: 1, name: "Die Hard", rating: 3},
-        {id: 2, name: "Titanic", rating: 5}, 
-        {id: 3, name: "The Rain", rating: 4},
-    ]
-};
-// Gets all movies
+let movieList = require('./express_JSON_API-RestAPI.json');
+
+// Gets all movies =================================================
 app.get('/Movie', (req, res) => {    
     res.send(movieList);
 });
@@ -30,40 +25,48 @@ app.get('/Movie/:id', (req, res) => {
     res.send(sendItem);
 });
 
-
-// Create a new movie
+// Create a new movie ===============================================
 let countID = 0;
-function createID() {    
+function createID() { 
     for (let index = 0; index < movieList.data.length; index++) {
-        const idMax = movieList.data[index];
-        countID = idMax.id;        
+        let idMax = movieList.data[index];
+        countID = idMax.id;
     }
     // Get the last id in my arr of movies
-    countID += 1;
+    console.log('Id innan förändring');
+    console.log(parseInt(countID));
+    
+    countID++;
+    console.log('44');
     console.log(countID);
+    
     return countID;
 }
 app.post('/Movie', (req, res) => {
-    console.log('Ny ' + createID());
-    let incommingPostData = {
+    console.log('Ny post');
+    createID();
+    console.log(req.body);
+    
+
+    let objForm = {
         id: createID(),
         name: req.body.name,
         rating: req.body.rating,
-    };    
-    movieList.data.push(incommingPostData);
+    };
+    movieList.data.push(objForm);
     // Save the movies in an json file
-    fileSystem.appendFile('express_JSON_API-RestAPI.json', JSON.stringify(incommingPostData), function(err) {
+    fileSystem.writeFile('express_JSON_API-RestAPI.json', JSON.stringify(objForm), function(err) {
         
-    })
-    
+    });
+   
     res.send(movieList);
     
 });
-// Update a movie
+// Update a movie ================================================
 app.put('/Movie/:id', (req, res) => {
 
 });
-// Delete a movie
+// Delete a movie ================================================
 app.delete('/Movie/:id', (req, res) => {
 
 });

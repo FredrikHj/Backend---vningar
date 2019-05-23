@@ -1,4 +1,7 @@
 {
     "data":
-        []
+        [  {"id": "1", "name": "Die Hard", "rating": "3"},
+           {"id": "2", "name": "Titanic", "rating": "5"}, 
+           {"id": "3", "name": "The Rain", "rating": "4"}
+        ]
 }
