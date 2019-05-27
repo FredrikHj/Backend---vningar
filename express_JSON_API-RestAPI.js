@@ -60,6 +60,7 @@ app.post('/Movie', (req, res) => {
         id: JSON.stringify(createID()),
         name: req.body.name,
         rating: req.body.rating,
+        genre: req.body.genre,
     };
     movieList.data.push(objForm);
     console.log(movieList);
@@ -68,6 +69,7 @@ app.post('/Movie', (req, res) => {
    fileSystem.writeFile('express_JSON_API-RestAPI.json', JSON.stringify(movieList //debugging
      , null, 2
     ), function(err) {
+       
         console.log(err);
         
     });
@@ -77,50 +79,68 @@ app.post('/Movie', (req, res) => {
 // Update a movie ================================================
 app.put('/Movie/:id', (req, res) => {
     console.log('Uppdatera film: ');
-    let countItem = 0;
-    let updateObj = {};
-    let updateItem;
 
-    let idToNr = parseInt(req.params.id);
-    console.log('Inkommande ID: '+ idToNr);
+
+    console.log('Inkommande ID: '+ parseInt(req.params.id));
    
-    // Get movie object to update
-    movieList.data.find((obj, idx) => {
-        countItem++;
-        if (idToNr === countItem) {
-            getItem = movieList.data[idx];
-            console.log('Update Item');
-            
-            updateObj = {
-                id: movieList.data[idx].id,
-                name: req.body.name,
-                rating: req.body.rating,  
-            };
-            let newItemList = [ ...movieList.data.slice(0, idx),  ...movieList.data.slice(idx + 1)];
-            console.log(newItemList);
 
-            console.log('Innan');
-            console.log(movieList.data);
+    // Get movie object to update
+    let updatedMovie = movieList.data.find((updateMovie) => {
+        console.log('id');
+        console.log(parseInt(updateMovie.id));
+
+        if (parseInt(req.params.id) === parseInt(updateMovie.id)) {
+            console.log('Update Item' + typeof parseInt(updateMovie.id));
             
-            console.log('Efter');
-            console.log(updateObj);
-            
-            movieList.data.push(updateObj);
-            
-            // Save the movies in an json file
-            fileSystem.writeFile('express_JSON_API-RestAPI.json', JSON.stringify(newItemList //debugging
-             , null, 2
-            ), function(err) {
-                console.log(err);
-                
-            });
-            res.send(newItemList);
-        }      
+            updateMovie.name = req.body.name;
+            updateMovie.rating = req.body.rating;  
+            updateMovie.genre = req.body.genre;  
+            return updateMovie;
+        }
     });
+    // Save the movies in an json file
+    fileSystem.writeFile('express_JSON_API-RestAPI.json', JSON.stringify(movieList //debugging
+        , null, 2
+        ), function(err) {
+            if (err) {
+                console.log(err);
+                return;
+            }            
+    });
+    res.status(200);
+    res.send({data: updatedMovie});
 });
 // Delete a movie ================================================
 app.delete('/Movie/:id', (req, res) => {
-
+    console.log('Tabort film');
+    let targetId = parseInt(req.params.id);
+    
+    // Verify if ID
+    if (!targetId) {
+        res.status(400).end();
+        return;
+    }
+    let deldMovieIndex = movieList.data.findIndex(delMovie => parseInt(delMovie.id) === targetId);
+    if (deldMovieIndex !== -1) {
+        
+        // Remove the item in the list
+        movieList.data.splice(deldMovieIndex, 1);
+    }
+    
+    
+    // Save the movies in an json file
+    fileSystem.writeFile('express_JSON_API-RestAPI.json', JSON.stringify(movieList //debugging
+    , null, 2
+    ), function(err) {
+        if (err) {
+            console.log(err);
+            res.status(204);
+            return;
+        }
+            
+    });
+        
+    res.status(204).end();
 });
 
  app.listen(port, () =>  console.log(`Example app listening on port ${port}!`));
