@@ -27,10 +27,7 @@ function pageQuantity(myList, queryStr) {
     
     //getListStartIndex = receiveEndIndex + 1;
     //let sendPaginationList = myList.slice[getListStartIndex, receiveEndIndex];
-    let newList = myList.slice((page - 1) * size, page * size);
-    console.log('28');
-    //console.log(newList);
-    
+    let newList = myList.slice((page - 1) * size, page * size);    
     return newList;
 }
 // Gets all movies =================================================
@@ -44,31 +41,14 @@ app.get('/Country', (req, res) => {
     
     console.log('42');
     let sendList = pageQuantity(myList, req.query);
+    console.log(sendList);
     
     res.send(sendList);
 });
-// Gets a specific movis
-
-
+// Gets a specific movies
 app.get('/setCookie', (req, res) => {
     let queryName = req.query.Name;
     res.cookie('name', queryName).send();
-
-    
-
-    
-    //req.cookie = cookieHeader.Url;
-    console. log(req.cookies.name);
-    
-    
-    
-    /* let queryName = req.query.Name;
-    console.log(queryName);
-    let cookieName = req.cookies;
-    console.log(cookieName);
-    cookieName = queryName;
-    */    //saveCookie.push(req.query.Name);
-    //res.send(saveCookie[0]);
 });
 app.get('/getCookie', (req, res) => {
     res.send('Hello ' + req.cookies.name)

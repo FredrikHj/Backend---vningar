@@ -11,10 +11,7 @@ app.post('/uppercase', (req, res) => {
     console.log(dataValue);
     
     data.value = dataValue; 
-    /* Vill inte
-    if (res.status === 400) {
-        dataValue = res.status(400).json({error: 'Fault'});  
-    } */
+
     console.log()
     res.send(dataValue);
 });

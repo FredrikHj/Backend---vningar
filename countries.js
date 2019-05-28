@@ -3,6 +3,8 @@ let resDataArr = [];
 
 axios.get('http://localhost:3000/Country')
 .then((res) => {
+    console.log(res);
+    
     resData = res.data;
     console.log(resData);
     let getUl = document.querySelector('#ul');
