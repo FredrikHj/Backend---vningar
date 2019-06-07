@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const fileSystem = require('fs');
 app.use(express.json());
-const port = 3000;
+const port = 3002;
 
 let movieList = require('./express_JSON_API-RestAPI.json');
 
@@ -121,6 +121,10 @@ app.delete('/Movie/:id', (req, res) => {
         return;
     }
     let deldMovieIndex = movieList.data.findIndex(delMovie => parseInt(delMovie.id) === targetId);
+    console.log('Removed movie');
+    
+    console.log(deldMovieIndex);
+    
     if (deldMovieIndex !== -1) {
         
         // Remove the item in the list

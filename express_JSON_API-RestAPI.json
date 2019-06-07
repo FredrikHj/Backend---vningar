@@ -1,36 +1,6 @@
 {
   "data": [
     {
-      "id": "3",
-      "name": "The Rain",
-      "rating": "4",
-      "genre": "Action"
-    },
-    {
-      "id": "4",
-      "name": "Die d",
-      "rating": "13",
-      "genre": "Action"
-    },
-    {
-      "id": "5",
-      "name": "hej",
-      "rating": "4",
-      "genre": "Action"
-    },
-    {
-      "id": "6",
-      "name": "hej",
-      "rating": "4",
-      "genre": "Action"
-    },
-    {
-      "id": "7",
-      "name": "hej",
-      "rating": "4",
-      "genre": "Action"
-    },
-    {
       "id": "8",
       "name": "hej",
       "rating": "4",
@@ -40,12 +10,6 @@
       "id": "9",
       "name": "hejdsv",
       "rating": "5",
-      "genre": "Action"
-    },
-    {
-      "id": "10",
-      "name": "Die H�r",
-      "rating": "0",
       "genre": "Action"
     },
     {
