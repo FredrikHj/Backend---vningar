@@ -2,9 +2,12 @@ html
   head
     title= title
   body
-    h1= message
 
-    <form method=”POST” action="#">
-      <label htmlFor="movies">Film</label>  <input type="text" id="movies" name="name"/>
-      <label htmlFor="movies">Sänd</label>  <input type="submit" value=>
-    </form>
+    form(method="post" name="movieList" action="/")
+      label(for="movies") Film
+      input(type="text" name="movies")
+      button Sänd
+
+    br
+    br
+    lista=lista
