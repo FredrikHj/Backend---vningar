@@ -1,12 +1,12 @@
 {
     "cars":
       [
-        {"id": 1, "model": "Volvo" },
-        {"id": 2, "model": "Titanic" }
+        {"carId": "1", "model": "Volvo" },
+        {"carId": "2", "model": "Titanic" }
       ],
     "users":
       [
-        {"id": 1, "name": "Fredrik" },
-        {"id": 2, "name": "Ole" }
+        {"userId": "1", "name": "Fredrik" },
+        {"userId": "2", "name": "Ole" }
       ]
 }

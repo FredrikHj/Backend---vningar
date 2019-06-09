@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const fileSystem = require('fs');
 app.use(express.json());
-const port = 3002;
+const port = 3000;
 
 let carUserList = require('./express_API-RestCarsUsers.json');
 
@@ -49,7 +49,27 @@ app.post('/Users', (req, res) => {
     console.log('Ny post - Användare');
 
     let objForm = {
-        id: JSON.stringify(createID(users)),
+        carId: JSON.stringify(createID(users)),
+        model: req.body.name
+    };
+    carUserList.users.push(objForm);
+    
+    // Save the movies in an json file
+   fileSystem.writeFile('express_API-RestCarsUsers.json', JSON.stringify(carUserList.users //debugging
+     , null, 2
+    ), function(err) {
+       
+        console.log(err);
+        
+    });
+   
+    res.send(movieList);
+});
+app.post('/Users', (req, res) => {
+    console.log('Ny post - Användare');
+
+    let objForm = {
+        userId: JSON.stringify(createID(users)),
         name: req.body.name
     };
     carUserList.users.push(objForm);
@@ -66,29 +86,14 @@ app.post('/Users', (req, res) => {
     res.send(movieList);
 });
 
-
-// Gets a specific movis
-app.get('/Movie/:id', (req, res) => {
-    let countItem = 0;
-    let getItem;
-    let idToNr = parseInt(req.params.id);
-
-    console.log('Inkommande ID: '+ idToNr);
+app.get('/User/:userId/car/:carId', (req, res) => {
+    console.log('fd');
     
-    // Get movie object
-    movieList.data.find((obj, idx) => {
-        countItem++;
-        if (idToNr === countItem) {
-            console.log('Item nr');
-            getItem = movieList.data[idx];
-            console.log(getItem);
-            
-        }      
-    });
-
-    console.log('Objekt visas');
-    console.log(getItem);
+    res.send(carUserList);
+});
+app.get('/', (req, res) => {
+    console.log('fd');
     
-    res.send(getItem);
+    res.send(carUserList);
 });
 app.listen(port, () =>  console.log(`Example app listening on port ${port}!`));
