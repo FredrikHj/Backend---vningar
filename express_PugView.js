@@ -19,6 +19,7 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
     let movie = req.body.movies; 
     //listArr.push(req.body.movies);    
+    res.status(200).end();
 });
 
 
