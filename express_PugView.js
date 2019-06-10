@@ -6,18 +6,20 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }
         ));
 const port = 3000;
-let movie = '';
-//let listArr = ['efw'];
+let movieListaArr = [];
 
 app.set('Views', './Views');
 app.set('view engine', 'pug');
 
 app.get('/', (req, res) => {
-    res.render('index', { title: 'Filmer', headline: 'Filmer', lista: movie });
+    res.render('index', { title: 'Filmer', headline: 'Filmer', lista: movieListaArr });
 });
 
 app.post('/', (req, res) => {
-    let movie = req.body.movies; 
+    console.log(req.body.movies);
+    
+    let movieListaArr = req.body.movies; 
+    res.redirect('/');
     //listArr.push(req.body.movies);    
     res.status(200).end();
 });

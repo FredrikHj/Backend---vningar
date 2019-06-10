@@ -2,12 +2,11 @@ html
   head
     title= title
   body
-
-    form(method="post" name="movieList" action="/")
+    form(method="post" action="/express_PugView.js")
       label(for="movies") Film
       input(type="text" name="movies")
       button Sänd
-
     br
-    br
-    lista=lista
+    ul
+      each movieList in lista
+        li= movieList
