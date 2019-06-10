@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const fileSystem = require('fs');
 app.use(express.json());
-const port = 3002;
+const port = 3000;
 
 let movieList = require('./express_JSON_API-RestAPI.json');
 

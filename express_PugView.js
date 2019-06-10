@@ -11,18 +11,15 @@ let movieListaArr = [];
 app.set('Views', './Views');
 app.set('view engine', 'pug');
 
+app.post('/', (req, res) => {
+    console.log(req.body.movies);
+    movieListaArr.push(req.body.movies);
+    
+    res.redirect('/');
+    res.status(200).end();
+});
 app.get('/', (req, res) => {
     res.render('index', { title: 'Filmer', headline: 'Filmer', lista: movieListaArr });
 });
-
-app.post('/', (req, res) => {
-    console.log(req.body.movies);
-    
-    let movieListaArr = req.body.movies; 
-    res.redirect('/');
-    //listArr.push(req.body.movies);    
-    res.status(200).end();
-});
-
 
 app.listen(port, () =>  console.log(`Example app listening on port ${port}!`));

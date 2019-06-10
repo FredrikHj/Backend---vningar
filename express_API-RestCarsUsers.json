@@ -1,12 +1,33 @@
 {
-    "cars":
-      [
-        {"carId": "1", "model": "Volvo" },
-        {"carId": "2", "model": "Titanic" }
-      ],
-    "users":
-      [
-        {"userId": "1", "name": "Fredrik" },
-        {"userId": "2", "name": "Ole" }
-      ]
+  "user": [
+    {
+      "userId": "1",
+      "name": "John"
+    },
+    {
+      "userId": "2",
+      "name": "Elisabet"
+    },
+    {
+      "userId": "3",
+      "name": "Susanne"
+    }
+  ],
+  "car": [
+    {
+      "carId": "1",
+      "model": "volvo XC90",
+      "ownerName": "John"
+    },
+    {
+      "carId": "2",
+      "model": "Wolksvagen Golf",
+      "ownerName": "John"
+    },
+    {
+      "carId": "2",
+      "model": "Wolksvagen Polo",
+      "ownerName": "Elisabet"
+    }
+  ]
 }
