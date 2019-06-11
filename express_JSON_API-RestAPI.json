@@ -43,50 +43,188 @@
     {
       "id": "16",
       "name": "Fredrik",
-      "rating": 5,
+      "rating": "5",
       "genre": "Action"
     },
     {
       "id": "17",
       "name": "Fredrik",
-      "rating": 5,
+      "rating": "5",
       "genre": "Action"
     },
     {
       "id": "18",
       "name": "Fredrik",
-      "rating": 5,
+      "rating": "5",
       "genre": "Action"
     },
     {
       "id": "19",
       "name": "Fredrik",
-      "rating": 5,
+      "rating": "5",
       "genre": "Action"
     },
     {
       "id": "20",
       "name": "Fredrik",
-      "rating": 5,
+      "rating": "5",
       "genre": "Action"
     },
     {
       "id": "21",
       "name": "Fredrik",
-      "rating": 5,
+      "rating": "5",
       "genre": "Action"
     },
     {
       "id": "22",
       "name": "Fredrik",
-      "rating": 5,
+      "rating": "5",
       "genre": "Action"
     },
     {
       "id": "23",
       "name": "Fredrik",
-      "rating": 5,
+      "rating": "5",
       "genre": "Action"
+    },
+    {
+      "id": "24",
+      "name": "Fredrik",
+      "rating": "5",
+      "genre": "Action"
+    },
+    {
+      "id": "25",
+      "name": "Fredrik",
+      "rating": "5",
+      "genre": "Action"
+    },
+    {
+      "id": "26",
+      "name": "Fredrik",
+      "rating": "5",
+      "genre": "Action"
+    },
+    {
+      "id": "27",
+      "name": "Fredrik",
+      "rating": "5",
+      "genre": "Action"
+    },
+    {
+      "id": "28",
+      "name": "Fredrik",
+      "rating": "5",
+      "genre": "Action"
+    },
+    {
+      "id": "29",
+      "name": "Fredrik",
+      "rating": "5",
+      "genre": "Action"
+    },
+    {
+      "id": "30",
+      "name": "Fredrik",
+      "rating": "5",
+      "genre": "Action"
+    },
+    {
+      "id": "31",
+      "name": "Fredrik",
+      "rating": "5",
+      "genre": "Action"
+    },
+    {
+      "id": "32",
+      "name": "Fredrik",
+      "rating": "5",
+      "genre": "Action"
+    },
+    {
+      "id": "33",
+      "name": "Fredrik",
+      "rating": "5",
+      "genre": "Action"
+    },
+    {
+      "id": "34",
+      "name": "Fredrik",
+      "rating": "5",
+      "genre": "Action"
+    },
+    {
+      "id": "35",
+      "name": "Fredrik",
+      "rating": "5",
+      "genre": "Action"
+    },
+    {
+      "id": "36",
+      "name": "Fredrik",
+      "rating": "5",
+      "genre": "Action"
+    },
+    {
+      "id": "37",
+      "name": "Fredrik",
+      "rating": "5",
+      "genre": "Action"
+    },
+    {
+      "id": "38",
+      "name": "Olle",
+      "rating": "6",
+      "genre": "Drama"
+    },
+    {
+      "id": "39",
+      "name": "Fredrik",
+      "rating": "5",
+      "genre": "Action"
+    },
+    {
+      "id": "40",
+      "name": "Fredrik",
+      "rating": "5",
+      "genre": "Action"
+    },
+    {
+      "id": "41",
+      "name": "Fredrik",
+      "rating": "5",
+      "genre": "Action"
+    },
+    {
+      "id": "42",
+      "name": "Fredrik",
+      "rating": "5",
+      "genre": "Action"
+    },
+    {
+      "id": "43",
+      "name": "Fredrik",
+      "rating": "5",
+      "genre": "Action"
+    },
+    {
+      "id": "44",
+      "name": "Olle",
+      "rating": "6",
+      "genre": "Drama"
+    },
+    {
+      "id": "45",
+      "name": "Olle",
+      "rating": "6",
+      "genre": "Drama"
+    },
+    {
+      "id": "46",
+      "name": "Ole",
+      "rating": "6",
+      "genre": "Drama"
     }
   ]
 }

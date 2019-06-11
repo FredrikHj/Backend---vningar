@@ -23,8 +23,8 @@ app.get('/Movie/:id', (req, res) => {
     movieList.data.find((obj, idx) => {
         countItem++;
         if (idToNr === countItem) {
-            console.log('Item nr');
             getItem = movieList.data[idx];
+            console.log('Item nr');
             console.log(getItem);
             
         }      
