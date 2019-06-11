@@ -11,29 +11,19 @@ let movieList = require('./express_JSON_API-RestAPI.json');
 app.get('/Movie', (req, res) => {    
     res.send(movieList);
 });
-// Gets a specific movis
+// Gets a specific movie
 app.get('/Movie/:id', (req, res) => {
     let countItem = 0;
     let getItem;
     let idToNr = parseInt(req.params.id);
-
+    let updatedMovieIndex = movieList.data.findIndex(update => parseInt(update.id) === idToNr);
+    
     console.log('Inkommande ID: '+ idToNr);
-    
+    console.log('Inkommande index: ');
+    console.log(updatedMovieIndex);
     // Get movie object
-    movieList.data.find((obj, idx) => {
-        countItem++;
-        if (idToNr === countItem) {
-            getItem = movieList.data[idx];
-            console.log('Item nr');
-            console.log(getItem);
-            
-        }      
-    });
-
-    console.log('Objekt visas');
-    console.log(getItem);
-    
-    res.send(getItem);
+    let getMovie = movieList.data[updatedMovieIndex];
+    res.send(getMovie);
 });
 
 // Create a new movie ===============================================
@@ -78,20 +68,10 @@ app.post('/Movie', (req, res) => {
 });
 // Update a movie ================================================
 app.put('/Movie/:id', (req, res) => {
-    console.log('Uppdatera film: ');
-
-
-    console.log('Inkommande ID: '+ parseInt(req.params.id));
-   
-
     // Get movie object to update
     let updatedMovie = movieList.data.find((updateMovie) => {
-        console.log('id');
-        console.log(parseInt(updateMovie.id));
-
         if (parseInt(req.params.id) === parseInt(updateMovie.id)) {
-            console.log('Update Item' + typeof parseInt(updateMovie.id));
-            
+           
             updateMovie.name = req.body.name;
             updateMovie.rating = req.body.rating;  
             updateMovie.genre = req.body.genre;  
@@ -122,7 +102,6 @@ app.delete('/Movie/:id', (req, res) => {
     }
     let deldMovieIndex = movieList.data.findIndex(delMovie => parseInt(delMovie.id) === targetId);
     console.log('Removed movie');
-    
     console.log(deldMovieIndex);
     
     if (deldMovieIndex !== -1) {
