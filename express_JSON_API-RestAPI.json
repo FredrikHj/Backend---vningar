@@ -14,15 +14,37 @@
     },
     {
       "id": "3",
-      "name": "Die H�r",
-      "rating": "7",
-      "genre": "Action"
+      "name": "regea",
+      "modell": "volvo",
+      "eff": "gfs"
     },
     {
       "id": "4",
       "name": "Ole",
       "rating": "7",
-      "genre": "Drama"
+      "genre": "Dgrama"
+    },
+    {
+      "id": "5",
+      "name": "Fredrik",
+      "rating": "5",
+      "genre": "Action"
+    },
+    {
+      "id": "6",
+      "name": "Fredrik",
+      "rating": "5",
+      "genre": "Action"
+    },
+    {
+      "id": "7",
+      "name": "Fredrfvdik"
+    },
+    {
+      "id": "9",
+      "name": "Fredrik",
+      "rating": "5",
+      "genre": "Action"
     }
   ]
 }

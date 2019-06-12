@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const fileSystem = require('fs');
 app.use(express.json());
-const port = 3000;
+const port = 3001;
 
 let movieList = require('./express_JSON_API-RestAPI.json');
 
@@ -89,6 +89,41 @@ app.put('/Movie/:id', (req, res) => {
     });
     res.status(200);
     res.send({data: updatedMovie});
+});
+// Update a part of movie
+app.patch('/Movie/:id', (req, res) => {
+    // Get movie object to update
+    let itemIndex = parseInt(req.params.id);
+    let updatedMovieIndex = movieList.data.findIndex(update => parseInt(update.id) === itemIndex);
+    let updateMovie = movieList.data[updatedMovieIndex];
+    console.log('Film att uppdatera');
+    console.log(updateMovie);
+
+    // Lopp through the inomming object and add the pair into my object
+    for (const loopKey in req.body) {
+        console.log(req.body[loopKey]);
+        updateMovie[loopKey] = req.body[loopKey];
+    }
+    // Lopp through the target object to update
+    for (const updateMovieKey in updateMovie) {
+        console.log(updateMovieKey);
+    }
+    // New object with updated key/value pair
+    let updatedObj = {
+
+    }
+    
+    // Save the movies in an json file
+     fileSystem.writeFile('express_JSON_API-RestAPI.json', JSON.stringify(movieList //debugging
+        , null, 2
+        ), function(err) {
+            if (err) {
+                console.log(err);
+                return;
+            }            
+    });
+    res.status(200);
+    res.send(updateMovie);
 });
 // Delete a movie ================================================
 app.delete('/Movie/:id', (req, res) => {

@@ -28,10 +28,29 @@ csv()
 let musicList = require('./dataMusic-RestAPI/music-RestAPI.json');
 
 app.get('/Music', (req, res) => {
-    console.log('fd');
+    console.log('Music all');
+    let keyListArr = [];
+    let page = parseInt(req.query.page);
+    let size = parseInt(req.query.size);
+    let filter = req.query.filter;
+        
+    if (!page) page = 1;
+    if (!size) size = 20;
+    if (!filter) filter = '';
+
+    let newList = musicList.slice((page - 1) * size, page * size);
+
+    // Filter the list on alls key
+    let filterList = newList.filter((musicData) => {    
+        return musicData.field1.includes(filter) || musicData.key.includes(filter) || musicData.song_title.includes(filter) || musicData.artist.includes(filter);
+    })
+
+    console.log('Filter at');
+    console.log(filterList);
     
-    res.send(musicList);
+    res.send(filterList);
 });
+// Get specific music
 app.get('/Music/:id', (req, res) => {
     console.log('ta ut specifika ');
     let idToNr = parseInt(req.params.id);
@@ -41,26 +60,6 @@ app.get('/Music/:id', (req, res) => {
     console.log(musicList[musicIndex]);
 
 
-  /*   for (let index = 0; index < carUserList['user'].length; index++) {
-        const user = carUserList['user'][index].name;
-        if (req.params.userName === user) {
-            console.log('gtrgbs');
-            getUser = carUserList['user'][index];
-
-            for (let index = 0; index < carUserList['car'].length; index++) {
-                const carOwner = carUserList['car'][index].ownerName;
-                if (user === carOwner) {
-                    model.push(carUserList['car'][index].model);
-                    console.log(model);
-                    
-                    console.log('rgeg');
-                    
-                }
-            }
-
-
-        }
-    } */
     res.send(musicList[musicIndex]);
 });
 

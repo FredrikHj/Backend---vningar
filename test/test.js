@@ -2,10 +2,9 @@ const axios = require('axios');
 const assert = require('assert');
 
 describe('Test routes - In movie', function() {
-    /* it('Are all movie here?', function(done) {
-        return axios.get('http://localhost:3000/Movie').then(res => {
+/*     it('Are all movie here?', function() {
+        return axios.get('http://localhost:3001/Movie').then(res => {
             assert.ok(res.data.data !== [], 'Fault');
-            done();
         })
 
     });
@@ -15,54 +14,24 @@ describe('Test routes - In movie', function() {
             rating: '5',
             genre: 'Action'
         }
-        return axios.post('http://localhost:3000/Movie', objForm).then(resp => {  
+        return axios.post('http://localhost:3001/Movie', objForm).then(resp => {  
             let newItem = resp.data.data.pop();
             assert.ok(newItem !== {}, 'Fault');
         })
     }); */
-    it('Are a movie updated', function() {
-        return axios.get('http://localhost:3000/Movie/4').then(res => {
-
-            let incomminBeforeUpdateName = res.data.name;
-            let incomminBeforeUpdateRating = res.data.rating;
-            let incomminBeforeUpdateGenre = res.data.genre;
-
-            let checkUpdateBefore = {
-                name: incomminBeforeUpdateName,
-                rating: incomminBeforeUpdateRating,
-                genre: incomminBeforeUpdateGenre
-            };
-            
-            let objForm = {
-                name: 'Ole',
-                rating: "7",
-                genre: 'Drama'
-            }
-            axios.put('http://localhost:3000/Movie/4', objForm).then(res => {
-                let incomminAfterUpdateName = res.data.data.name;
-                let incomminAfterUpdateRating = res.data.data.rating;
-                let incomminAfterUpdateGenre = res.data.data.genre;
-                
-                let checkUpdateAfter = {
-                    name: incomminAfterUpdateName,
-                    rating: incomminAfterUpdateRating,
-                    genre: incomminAfterUpdateGenre
-                };       
-                
-                console.log('Före');
-                console.log(checkUpdateBefore);
-                console.log('Efter');
-                console.log(checkUpdateAfter);               
-                assert.notDeepStrictEqual(checkUpdateBefore, checkUpdateAfter //, 'The two object is equal = Not update'
-                );
-            })
-        })       
+    it('Are a movie updated?', function() {
+        let obj = {
+            name: 'Fredrfvdik'
+        }
+        return axios.put('http://localhost:3001/Movie/7', obj).then(resp => {            
+            assert.ok(resp.status === 200, 'Fault');
+        })
     });
-/*     it('Are a movie deleted?', function() {
-        axios.delete('http://localhost:3000/Movie/4').then(resp => {            
+    it('Are a movie deleted?', function() {
+        return axios.delete('http://localhost:3001/Movie/8').then(resp => {            
             assert.ok(resp.status === 204, 'Fault');
         })
-    }); */
+    });
 
 });
 /* 
